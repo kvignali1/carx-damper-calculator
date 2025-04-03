@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CarX Damper Calculator by SideSwipe and ChatGPT</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      height: 100vh;
+      background: #000;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    h2 {
+      color: #ff4444;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    input {
+      width: 100px;
+      margin-right: 10px;
+      padding: 5px;
+      border-radius: 5px;
+      border: none;
+    }
+    button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      border: none;
+      background-color: #ff4444;
+      color: #000;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .form-group {
+      margin-bottom: 10px;
+    }
+    .result {
+      margin-top: 30px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .card {
+      background: #1a1a1a;
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(255, 68, 68, 0.3);
+      width: 300px;
+    }
+    .card h3 {
+      margin-top: 0;
+      border-bottom: 1px solid #ff4444;
+      padding-bottom: 5px;
+      color: #ff4444;
+    }
+    .card p {
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <h2>CarX Damper Calculator by SideSwipe and ChatGPT</h2>
+
+  <div class="form-group">
+    <label>Suspended Mass (kg): <input type="number" id="mass" value="625"></label>
+    <label>Front Spring Constant (kN/m): <input type="number" id="frontSpring" value="90"></label>
+    <label>Rear Spring Constant (kN/m): <input type="number" id="rearSpring" value="85"></label>
+    <button onclick="calculate()">Calculate</button>
+  </div>
+
+  <div class="result" id="results"></div>
+
+  <script>
+    function calculate() {
+      const mass = parseFloat(document.getElementById('mass').value);
+      const frontSpring = parseFloat(document.getElementById('frontSpring').value) * 1000;
+      const rearSpring = parseFloat(document.getElementById('rearSpring').value) * 1000;
+
+      const bumpRatio = 0.7;
+      const fastBumpRatio = 0.6;
+      const reboundOffset = 1200;
+
+      const cFrontBump = 2 * bumpRatio * Math.sqrt(frontSpring * mass);
+      const cFrontRebound = cFrontBump - reboundOffset;
+      const cFrontFastBump = 2 * fastBumpRatio * Math.sqrt(frontSpring * mass);
+      const cFrontFastRebound = cFrontFastBump - reboundOffset;
+
+      const cRearBump = 2 * bumpRatio * Math.sqrt(rearSpring * mass);
+      const cRearRebound = cRearBump - reboundOffset;
+      const cRearFastBump = 2 * fastBumpRatio * Math.sqrt(rearSpring * mass);
+      const cRearFastRebound = cRearFastBump - reboundOffset;
+
+      const html = `
+        <div class="card">
+          <h3>Front Dampers</h3>
+          <p><strong>Bump:</strong> ${cFrontBump.toFixed(2)} Ns/m</p>
+          <p><strong>Rebound:</strong> ${cFrontRebound.toFixed(2)} Ns/m</p>
+          <p><strong>Fast Bump:</strong> ${cFrontFastBump.toFixed(2)} Ns/m</p>
+          <p><strong>Fast Rebound:</strong> ${cFrontFastRebound.toFixed(2)} Ns/m</p>
+        </div>
+        <div class="card">
+          <h3>Rear Dampers</h3>
+          <p><strong>Bump:</strong> ${cRearBump.toFixed(2)} Ns/m</p>
+          <p><strong>Rebound:</strong> ${cRearRebound.toFixed(2)} Ns/m</p>
+          <p><strong>Fast Bump:</strong> ${cRearFastBump.toFixed(2)} Ns/m</p>
+          <p><strong>Fast Rebound:</strong> ${cRearFastRebound.toFixed(2)} Ns/m</p>
+        </div>
+      `;
+
+      document.getElementById('results').innerHTML = html;
+    }
+
+    // Trigger calculation on Enter key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        calculate();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -3,21 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CarX Damper Calculator by SideSwipe</title>
+  <title>CarX Damper Calculator by SideSwipe and ChatGPT</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      height: 100vh;
+      padding: 0;
       background: #000;
       color: #fff;
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
+      flex-direction: row;
+      min-height: 100vh;
+    }
+    .container {
+      text-align: center;
+      max-width: 700px;
+      padding: 20px;
     }
     h2 {
       color: #ff4444;
+      margin-bottom: 20px;
     }
     label {
       display: block;
@@ -66,19 +73,25 @@
     .card p {
       margin: 8px 0;
     }
+    .side-img {
+      max-height: 90vh;
+      object-fit: cover;
+    }
   </style>
 </head>
 <body>
-  <h2>CarX Damper Calculator by SideSwipe</h2>
-
-  <div class="form-group">
-    <label>Suspended Mass (kg): <input type="number" id="mass" value="625"></label>
-    <label>Front Spring Constant (kN/m): <input type="number" id="frontSpring" value="90"></label>
-    <label>Rear Spring Constant (kN/m): <input type="number" id="rearSpring" value="85"></label>
-    <button onclick="calculate()">Calculate</button>
+  <img src="IMG_1341.jpg" class="side-img" alt="SideSwipe Car 1">
+  <div class="container">
+    <h2>CarX Damper Calculator by SideSwipe and ChatGPT</h2>
+    <div class="form-group">
+      <label>Suspended Mass (kg): <input type="number" id="mass" value="625"></label>
+      <label>Front Spring Constant (kN/m): <input type="number" id="frontSpring" value="90"></label>
+      <label>Rear Spring Constant (kN/m): <input type="number" id="rearSpring" value="85"></label>
+      <button onclick="calculate()">Calculate</button>
+    </div>
+    <div class="result" id="results"></div>
   </div>
-
-  <div class="result" id="results"></div>
+  <img src="image.jpg" class="side-img" alt="SideSwipe Car 2">
 
   <script>
     function calculate() {

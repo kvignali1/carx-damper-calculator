@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CarX Damper Calculator by SideSwipe and ChatGPT</title>
+  <title>CarX Damper Calculator by SideSwipe</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -80,18 +80,16 @@
   </style>
 </head>
 <body>
-  <img src="IMG_134.jpg" class="side-img" alt="SideSwipe Car 1">
   <div class="container">
-    <h2>CarX Damper Calculator by SideSwipe and ChatGPT</h2>
+    <h2>CarX Damper Calculator by SideSwipe</h2>
     <div class="form-group">
-      <label>Suspended Mass (kg): <input type="number" id="mass" value="625"></label>
-      <label>Front Spring Constant (kN/m): <input type="number" id="frontSpring" value="90"></label>
-      <label>Rear Spring Constant (kN/m): <input type="number" id="rearSpring" value="85"></label>
+      <label>Vehicle Weight (kg): <input type="number" id="mass" value="625"></label>
+      <label>Front Spring Stiffness (kN/m): <input type="number" id="frontSpring" value="90"></label>
+      <label>Rear Spring Stiffness (kN/m): <input type="number" id="rearSpring" value="85"></label>
       <button onclick="calculate()">Calculate</button>
     </div>
     <div class="result" id="results"></div>
   </div>
-  <img src="imag.jpg" class="side-img" alt="SideSwipe Car 2">
 
   <script>
     function calculate() {

@@ -11,6 +11,8 @@
       padding: 0;
       background: #000;
       color: #fff;
+    }
+    .wrapper {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -78,7 +80,7 @@
       object-fit: cover;
     }
     .menu {
-      position: absolute;
+      position: fixed;
       top: 20px;
       right: 20px;
       z-index: 1000;
@@ -145,21 +147,6 @@
   </style>
 </head>
 <body>
-  <img src="IMG_1341.jpg" class="side-img" alt="SideSwipe Car 1">
-
-  <div class="container">
-    <h2>CarX Damper Calculator by SideSwipe and ChatGPT</h2>
-    <div class="form-group">
-      <label>Suspended Mass (kg): <input type="number" id="mass" value="625"></label>
-      <label>Front Spring Constant (kN/m): <input type="number" id="frontSpring" value="90"></label>
-      <label>Rear Spring Constant (kN/m): <input type="number" id="rearSpring" value="85"></label>
-      <button onclick="calculate()">Calculate</button>
-    </div>
-    <div class="result" id="results"></div>
-  </div>
-
-  <img src="image.jpg" class="side-img" alt="SideSwipe Car 2">
-
   <div class="menu">
     <div class="dropdown">
       <button class="dropdown-button">Helpful Tips</button>
@@ -174,13 +161,49 @@
     </div>
   </div>
 
+  <div class="wrapper">
+    <img src="IMG_1341.jpg" class="side-img" alt="SideSwipe Car 1">
+
+    <div class="container">
+      <h2>CarX Damper Calculator by SideSwipe and ChatGPT</h2>
+      <div class="form-group">
+        <label>Suspended Mass (kg): <input type="number" id="mass" value="625"></label>
+        <label>Front Spring Constant (kN/m): <input type="number" id="frontSpring" value="90"></label>
+        <label>Rear Spring Constant (kN/m): <input type="number" id="rearSpring" value="85"></label>
+        <button onclick="calculate()">Calculate</button>
+      </div>
+      <div class="result" id="results"></div>
+    </div>
+
+    <img src="image.jpg" class="side-img" alt="SideSwipe Car 2">
+  </div>
+
   <div class="popup" id="tipPopup">
     <h3 id="popupTitle"></h3>
-    <p>OPEN FOR SUGGESTIONS</p>
+    <p id="popupContent">Open for suggestions</p>
     <button class="popup-close" onclick="closePopup()">Close</button>
   </div>
 
   <script>
+    const tipContent = {
+      Stiffness: "Tips about spring rates, sway bars, and vehicle balance.",
+      Alignment: "Camber, toe, and caster settings for grip and responsiveness.",
+      Wheels: "Wheel diameter, width, offset, and their effect on handling.",
+      Brakes: "Brake bias, pad selection, and fluid tips.",
+      Engine: "Powerband usage, tuning ideas, and throttle modulation.",
+      Transmission: "Gear ratios, final drive, and shift timing tips."
+    };
+
+    function openPopup(title) {
+      document.getElementById('popupTitle').textContent = title + " Tips";
+      document.getElementById('popupContent').textContent = tipContent[title] || "Open for suggestions";
+      document.getElementById('tipPopup').style.display = 'block';
+    }
+
+    function closePopup() {
+      document.getElementById('tipPopup').style.display = 'none';
+    }
+
     function calculate() {
       const mass = parseFloat(document.getElementById('mass').value);
       const frontSpring = parseFloat(document.getElementById('frontSpring').value) * 1000;
@@ -225,15 +248,6 @@
         calculate();
       }
     });
-
-    function openPopup(title) {
-      document.getElementById('popupTitle').textContent = title + " Tips";
-      document.getElementById('tipPopup').style.display = 'block';
-    }
-
-    function closePopup() {
-      document.getElementById('tipPopup').style.display = 'none';
-    }
   </script>
 </body>
 </html>

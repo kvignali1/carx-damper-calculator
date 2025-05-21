@@ -12,6 +12,24 @@
       background: #000;
       color: #fff;
     }
+    .rgb-glow {
+      animation: colorShift 6s infinite alternate, glow 2.5s ease-in-out infinite;
+    }
+    @keyframes colorShift {
+      0% { color: red; }
+      25% { color: orange; }
+      50% { color: lime; }
+      75% { color: cyan; }
+      100% { color: violet; }
+    }
+    @keyframes glow {
+      0%, 100% {
+        text-shadow: 0 0 5px rgba(255, 0, 0, 0.6), 0 0 10px rgba(255, 0, 0, 0.4);
+      }
+      50% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 0, 0, 0.6);
+      }
+    }
     .wrapper {
       display: flex;
       justify-content: center;
@@ -25,7 +43,6 @@
       padding: 20px;
     }
     h2 {
-      color: #ff4444;
       margin-bottom: 20px;
     }
     label {
@@ -76,7 +93,6 @@
       margin: 8px 0;
     }
     .side-img {
-      display:none;
       max-height: 45vh;
       object-fit: cover;
     }
@@ -152,7 +168,6 @@
     }
   </style>
 </head>
-<body>
   <div class="menu">
     <div class="dropdown">
       <button class="dropdown-button">Helpful Tips</button>
@@ -253,6 +268,10 @@
       if (event.key === 'Enter') {
         calculate();
       }
+    });
+window.addEventListener('DOMContentLoaded', () => {
+      const title = document.querySelector('h2');
+      if (title) title.classList.add('rgb-glow');
     });
   </script>
 </body>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CarX Damper Calculator by SideSwipe</title>
+  <title>CarX Damper Calculator by SideSwipe and ChatGPT</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -77,18 +77,107 @@
       max-height: 90vh;
       object-fit: cover;
     }
+    .menu {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #1a1a1a;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+    }
+    .dropdown-content a {
+      color: #fff;
+      padding: 10px 12px;
+      text-decoration: none;
+      display: block;
+      cursor: pointer;
+    }
+    .dropdown-content a:hover {
+      background-color: #ff4444;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    .dropdown-button {
+      background-color: #ff4444;
+      color: #000;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #1a1a1a;
+      color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 68, 68, 0.5);
+      z-index: 2000;
+    }
+    .popup h3 {
+      color: #ff4444;
+    }
+    .popup-close {
+      margin-top: 15px;
+      background-color: #ff4444;
+      border: none;
+      color: #000;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
+  <img src="IMG_1341.jpg" class="side-img" alt="SideSwipe Car 1">
+
   <div class="container">
-    <h2>CarX Damper Calculator by SideSwipe</h2>
+    <h2>CarX Damper Calculator by SideSwipe and ChatGPT</h2>
     <div class="form-group">
-      <label>Vehicle Weight (kg): <input type="number" id="mass" value="625"></label>
-      <label>Front Spring Stiffness (kN/m): <input type="number" id="frontSpring" value="90"></label>
-      <label>Rear Spring Stiffness (kN/m): <input type="number" id="rearSpring" value="85"></label>
+      <label>Suspended Mass (kg): <input type="number" id="mass" value="625"></label>
+      <label>Front Spring Constant (kN/m): <input type="number" id="frontSpring" value="90"></label>
+      <label>Rear Spring Constant (kN/m): <input type="number" id="rearSpring" value="85"></label>
       <button onclick="calculate()">Calculate</button>
     </div>
     <div class="result" id="results"></div>
+  </div>
+
+  <img src="image.jpg" class="side-img" alt="SideSwipe Car 2">
+
+  <div class="menu">
+    <div class="dropdown">
+      <button class="dropdown-button">Helpful Tips</button>
+      <div class="dropdown-content">
+        <a onclick="openPopup('Stiffness')">Stiffness</a>
+        <a onclick="openPopup('Alignment')">Alignment</a>
+        <a onclick="openPopup('Wheels')">Wheels</a>
+        <a onclick="openPopup('Brakes')">Brakes</a>
+        <a onclick="openPopup('Engine')">Engine</a>
+        <a onclick="openPopup('Transmission')">Transmission</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup" id="tipPopup">
+    <h3 id="popupTitle"></h3>
+    <p>Open for suggestions</p>
+    <button class="popup-close" onclick="closePopup()">Close</button>
   </div>
 
   <script>
@@ -131,12 +220,20 @@
       document.getElementById('results').innerHTML = html;
     }
 
-    // Trigger calculation on Enter key
     document.addEventListener('keydown', function(event) {
       if (event.key === 'Enter') {
         calculate();
       }
     });
+
+    function openPopup(title) {
+      document.getElementById('popupTitle').textContent = title + " Tips";
+      document.getElementById('tipPopup').style.display = 'block';
+    }
+
+    function closePopup() {
+      document.getElementById('tipPopup').style.display = 'none';
+    }
   </script>
 </body>
 </html>

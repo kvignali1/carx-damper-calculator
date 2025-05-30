@@ -202,7 +202,7 @@
         <label>Fast Bump Ratio: <input type="number" id="fastBumpRatio" value="0.6" step="0.01"></label>
         <label>Front Spring Constant (kN/m): <input type="number" id="frontSpring" value="90"></label>
         <label>Rear Spring Constant (kN/m): <input type="number" id="rearSpring" value="85"></label>
-        <button onclick="calculate()">Calculate</button>
+        <button onclick="letsideswipecalculatemydampers()">Calculate</button>
       </div>
       <div class="result" id="results"></div>
     </div>
@@ -278,7 +278,7 @@
 
     document.addEventListener('keydown', function(event) {
       if (event.key === 'Enter') {
-        calculate();
+        letsideswipecalculatemydampers();
       }
     });
 window.addEventListener('DOMContentLoaded', () => {

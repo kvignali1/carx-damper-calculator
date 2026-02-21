@@ -198,8 +198,8 @@
       <h2>CarX Damper Calculator by SideSwipe</h2>
       <div class="form-group">
         <label>Car Weight in Kilograms (kg): <input type="number" id="mass" value="625"></label>
-        <label>Bump Ratio (up for stiff, down for soft) (Always .1 more than Fast Bump Ratio): <input type="number" id="bumpRatio" value="0.7" step="0.01" min="0.1" max="1.0"></label>
-        <label>Fast Bump Ratio (up for stiff, down for soft) (Always .1 less than Bump Ratio): <input type="number" id="fastBumpRatio" value="0.6" step="0.01" min="0.1" max="1.0"></label>
+        <label>Bump Ratio (up for stiff, down for soft): <input type="number" id="bumpRatio" value="0.7" step="0.01" min="0.1" max="1.0"></label>
+        <label>Fast Bump Ratio (up for stiff, down for soft): <input type="number" id="fastBumpRatio" value="0.6" step="0.01" min="0.1" max="1.0"></label>
         <label>Front Spring Stiffness (kN/m): <input type="number" id="frontSpring" value="90"></label>
         <label>Rear Spring Stiffness (kN/m): <input type="number" id="rearSpring" value="85"></label>
         <button onclick="letsideswipecalculatemydampers()">Calculate</button>
@@ -219,6 +219,7 @@
   <script>
     const tipContent = {
       
+      BumpRatio: "Bump Ratio is not a setting that you pull from CarX. It is a representation of % of damping. .10 is 10% and 1.0 is 100%. So for instance the starting numbers in the calculator .7 is 70% and .6 is 60%. If you want more damping you raise the number up and lower it down for less damping. Bump Ratio is set to be the optimal ratio for any car in the game. If you feel that it is too stiff or too soft, I gave you the option of changing it. You shouldn't need to though :)",
       Stiffness: "Setting spring stiffness of a car should be the first thing you do. Its the foundation of the tune. The stiffness must not be adjusted after you make any tuning adjustments to any other thing in the car. If you adjust stiffness, everything else will be affected. Changing the spring stiffness will affect a number of things: 1. Rear Camber when squatting, 2. Front Camber, 3. Damper Ratio Calculations, 4. Sway Bar front and rear.",
       Alignment: "If you find yourself taking too much angle, or having to stop the steering wheel from turning too far, or be timid/uncontrollable when catching angle, reduce front toe which should be negative. Increasing front roll bar can give you more grip in some cases. Try by 1 or two clicks at a time. Caster is a direct control of the weight of the wheel. It can be used to increase Force Feedback as well as transition speed. Front camber should be negative to preference, but if transition speed is slow, lowering front camber can speed it up directly, even better than caster can. Raising or going more negative in front camber can slow down transition speed and make the car more predictible. If you find yourself spinning alot when getting near or hitting full lock, your ackerman may be set wrong. The lower the setting of ackerman, the less potential there is for spinning, more front bite, and more angle. The higher the ackerman, the more controlled the car is and forgiving. 100% ackerman is the most responsive and preferred by most drifters.",
       Wheels: "Wheel diameter, width, offset, and their effect on handling. Some drifters run a squared set-up which means all tires are the same width. This can be beneficial to achieve a very predictable and solid setup. Some cases cars are really front or rear heavy, in this case drivers can run a non-squared setup meaning the front pair and rear pair do not match in size. All non-squared setups are bigger in the rear and smaller in the front. Lowering tire pressure generally gives more grip. This can be applied both in the front and rear. If a car bites too much, but you like your suspension setup, raise front tire pressure and it wont bite as much. If you lower rear tire pressure you pick up grip. If you find yourself losing grip lower tire pressure. Need to run a wide line and keep straighening? You can raise rear tire pressure to push out wider. *there is a better way to do this in transmission section*",
@@ -289,4 +290,5 @@ window.addEventListener('DOMContentLoaded', () => {
 </body>
 </html>
 <!--all code was created and updated by SideSwipe aka Kevin A Vignali  -->
+
 

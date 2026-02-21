@@ -200,11 +200,10 @@
       <div class="form-group">
         <button type="button" id="toggleRatioBtn" onclick="toggleRatioSettings()">Show Damper Ratio Settings</button>
 
-<div id="ratioSettings" style="display:none;">
-  <label>Bump Ratio (up for stiff, down for soft): <input type="number" id="bumpRatio" value="0.7" step="0.01" min="0.1" max="1.0"></label>
-  <label>Fast Bump Ratio (up for stiff, down for soft): <input type="number" id="fastBumpRatio" value="0.6" step="0.01" min="0.1" max="1.0"></label>
-</div>
+      <div id="ratioSettings" style="display:none;">
+        <label>Bump Ratio (up for stiff, down for soft): <input type="number" id="bumpRatio" value="0.7" step="0.01" min="0.1" max="1.0"></label>
         <label>Fast Bump Ratio (up for stiff, down for soft): <input type="number" id="fastBumpRatio" value="0.6" step="0.01" min="0.1" max="1.0"></label>
+      </div>
         <label>Front Spring Stiffness (kN/m): <input type="number" id="frontSpring" value="90"></label>
         <label>Rear Spring Stiffness (kN/m): <input type="number" id="rearSpring" value="85"></label>
         <button onclick="letsideswipecalculatemydampers()">Calculate</button>
@@ -310,6 +309,7 @@ window.addEventListener('DOMContentLoaded', () => {
 </body>
 </html>
 <!--all code was created and updated by SideSwipe aka Kevin A Vignali  -->
+
 
 
 
